@@ -55,7 +55,7 @@ app.get( "/eventos", (req, res) =>{
 
 // POST Request
 
-app.post( "/eventos/:id", function(req, res){
+app.get( "/eventos/:id", function(req, res){
 
     console.log(`Accediendo al elemento en la posición: ${req.params.id}`);
 
