@@ -53,6 +53,16 @@ app.get( "/eventos", (req, res) =>{
 
 } );
 
+// POST Request
+
+app.post( "/eventos/:id", function(req, res){
+
+    console.log(`Accediendo al elemento en la posición: ${req.params.id}`);
+
+    res.send(arrEventoJson.arreglo[req.params.id])
+})
+
+
 // Inicializar el servidor
 
 app.listen("4001", ()=>{
