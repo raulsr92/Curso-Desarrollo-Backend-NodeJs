@@ -3,7 +3,11 @@ console.log("Hola Mundo, soy Raúl")
 // Importación de paquetes
 
 import express from 'express'
+import bodyParser from 'body-parser'
+
+
 const app = express();
+app.use(bodyParser.json());
 
 
 // Arreglo de eventos
@@ -53,13 +57,28 @@ app.get( "/eventos", (req, res) =>{
 
 } );
 
-// POST Request
 
 app.get( "/eventos/:id", function(req, res){
 
     console.log(`Accediendo al elemento en la posición: ${req.params.id}`);
 
     res.send(arrEventoJson.arreglo[req.params.id])
+})
+
+// POST Request
+
+app.post("/eventos", function (req,res) {
+
+    const objEvento = req.body
+
+    res.send(objEvento)
+
+    console.log(objEvento)
+
+    // Agregar a array
+
+    arrEventoJson.arreglo.push(objEvento)
+
 })
 
 
