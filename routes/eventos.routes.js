@@ -12,6 +12,6 @@ const router = express.Router();
 
 router.get("/",ceventos.getAll);
 router.get("/:id",ceventos.getById);
-router.get("/", ceventos.create)
+router.post("/", ceventos.create)
 
 export default router;
