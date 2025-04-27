@@ -4,10 +4,17 @@ console.log("Hola Mundo, soy Raúl")
 
 import express from 'express'
 import bodyParser from 'body-parser'
+import api from './routes.js'
+
+// Instancias
 
 
 const app = express();
+
+// Configuraciones y redireccioens
+
 app.use(bodyParser.json());
+app.use("/api/v1", api)
 
 
 /*
