@@ -4,6 +4,8 @@ console.log("Hola Mundo, soy Raúl")
 
 import express from 'express'
 import bodyParser from 'body-parser'
+import cors from 'cors'
+
 import api from './routes.js'
 
 // Instancias
@@ -11,10 +13,22 @@ import api from './routes.js'
 
 const app = express();
 
+const corsOptions ={
+    origin:'http://localhost/' ,
+    methods: ['GET', 'POST','PUT', 'DELETE'],
+    allowedHeaders: ['Content-type','Authorization'],
+    credentials: true
+}
+
 // Configuraciones y redireccioens
 
 app.use(bodyParser.json());
+
+app.use(cors(corsOptions));
+
 app.use("/api/v1", api)
+
+
 
 
 /*
