@@ -14,5 +14,6 @@ router.get("/",ceventos.getAll);
 router.get("/:id",ceventos.getById);
 router.post("/", ceventos.create)
 router.put("/:id",ceventos.update)
+router.delete("/:id",ceventos.deleteRow)
 
 export default router;

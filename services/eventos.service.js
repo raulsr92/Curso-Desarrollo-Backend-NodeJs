@@ -87,3 +87,20 @@ export const update = function (Id_Evento, objEvento) {
 
 // ⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩  Método delete
 
+export const deleteRow = function (activo,Id_Evento) {
+ 
+    console.log("----------------------Service Modificar Evento--------------------")
+    
+    return new Promise( (resolve, reject) =>{
+        pool.query( 'update tb_evento set Activo=?  where Id_Evento = ?',
+                    [activo,Id_Evento],(err, results, fields)=>{
+            console.log(results);
+            if(err){
+                reject(err)
+            } else{
+                resolve(results.affectedRows)
+            }
+        })
+    }
+    )
+}
