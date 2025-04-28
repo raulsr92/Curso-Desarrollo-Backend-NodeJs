@@ -45,8 +45,27 @@ const arrEventoJson={
 // Funciones exportables
 
 export const getAll = function (req, res) {
-    res.send(arrEventoJson.arreglo)
+
+    console.log("------------controller------------");
+
+    seventos.getAll()
+    .then( (eventos) =>{
+
+            console.log("....despues de seventos.getAll()");
+
+            res.json(eventos|| [] )
+
+    })
+    .catch(
+        err => {
+            res.status(500).json({"error":"Error obteniendo registros"});
+        }
+    )
+    /*res.send(arrEventoJson.arreglo)*/
 }
+
+
+
 
 export const getById = function (req, res) {
     res.send(arrEventoJson.arreglo[req.params.id])

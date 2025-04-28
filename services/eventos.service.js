@@ -5,7 +5,7 @@ import pool from '../config/db.js'
 
 // Crear funciones
 
-export const getAll = function (req, res) {
+export const getAll = function () {
  
     console.log("----------------------Service--------------------")
     
