@@ -14,6 +14,5 @@ router.get("/",cpedidos.getAll);
 router.get("/:id",cpedidos.getById);
 router.post("/", cpedidos.create)
 router.put("/:id",cpedidos.update)
-router.delete("/:id",cpedidos.deleteRow)
 
 export default router;

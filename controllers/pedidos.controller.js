@@ -75,12 +75,12 @@ export const create = function(req, res){
 
 export const update = function(req, res){
 
-    const objEvento = req.body
-    console.log(objEvento)
-    seventos.update(req.params.id,objEvento)
+    const objPedido = req.body
+    console.log(objPedido)
+    spedidos.update(req.params.id,objPedido)
     .then( NumRegistros =>{
 
-        console.log("....despues de seventos.update()");
+        console.log("....despues de spedidos.update()");
         res.json({"NumeroRegistrosModificados":NumRegistros});
 
         })
@@ -91,21 +91,3 @@ export const update = function(req, res){
 )
 }
 
-// ⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩  Método delete
-
-
-export const deleteRow = function(req, res){
-
-    seventos.deleteRow('false',req.params.id)
-    .then( NumRegistros =>{
-
-        console.log("....despues de seventos.deleteRow()");
-        res.json({"NumeroRegistrosModificados":NumRegistros});
-
-        })
-    .catch(
-        err => {
-        res.status(500).json({"error":"Error eliminando registros"});
-    }
-)
-}

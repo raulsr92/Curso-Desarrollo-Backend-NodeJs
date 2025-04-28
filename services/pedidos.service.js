@@ -29,7 +29,7 @@ export const getAll = function () {
 
 export const getById = function (Id_Pedido) {
  
-    console.log("----------------------Service Insertar nuevo Evento--------------------")
+    console.log("----------------------Service Listar por ID--------------------")
     
     return new Promise( (resolve, reject) =>{
         pool.query( 'select P.id_pedido,U.nom_usuario,U.correo_usuario,P.fecha_pedido,P.monto_total_pedido,MP.nombre_mediopago,E.Nombre_Evento from tb_pedido P inner join tb_usuario U on P.id_usuario = U.id_usuario inner join tb_evento E on P.Id_Evento = E.Id_Evento inner join tb_mediopago MP on MP.id_mediopago = P.id_mediopago where id_pedido = ?',
@@ -49,7 +49,7 @@ export const getById = function (Id_Pedido) {
 
 export const create = function (objPedido) {
  
-    console.log("----------------------Service Insertar nuevo Evento--------------------")
+    console.log("----------------------Service Insertar nuevo Pedido--------------------")
     
     return new Promise( (resolve, reject) =>{
         pool.query( 'INSERT INTO tb_pedido  (fecha_pedido,monto_total_pedido,id_mediopago, id_usuario, Id_Evento ) VALUES (now(),?,?,?,?)',
@@ -67,13 +67,13 @@ export const create = function (objPedido) {
 
 // ⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩  Método update
 
-export const update = function (Id_Evento, objEvento) {
+export const update = function (Id_Pedido, objPedido) {
  
-    console.log("----------------------Service Modificar Evento--------------------")
+    console.log("----------------------Service Modificar Pedido--------------------")
     
     return new Promise( (resolve, reject) =>{
-        pool.query( 'update tb_evento set Nombre_Evento = ?, Fecha_Evento = ?, Hora_Evento=?,Id_Cate =?,Id_Local=? where Id_Evento = ?',
-                    [objEvento.Nombre_Evento, objEvento.Fecha_Evento,objEvento.Hora_Evento,objEvento.Id_Cate,objEvento.Id_Local,Id_Evento],(err, results, fields)=>{
+        pool.query( 'update tb_pedido set monto_total_pedido = ?, id_mediopago= ?, id_usuario=?, Id_Evento = ? where id_pedido = ?',
+                    [objPedido.monto_total_pedido,objPedido.id_mediopago,objPedido.id_usuario,objPedido.Id_Evento,Id_Pedido],(err, results, fields)=>{
             console.log(results);
             if(err){
                 reject(err)
@@ -85,22 +85,3 @@ export const update = function (Id_Evento, objEvento) {
     )
 }
 
-// ⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩  Método delete
-
-export const deleteRow = function (activo,Id_Evento) {
- 
-    console.log("----------------------Service Modificar Evento--------------------")
-    
-    return new Promise( (resolve, reject) =>{
-        pool.query( 'update tb_evento set Activo=?  where Id_Evento = ?',
-                    [activo,Id_Evento],(err, results, fields)=>{
-            console.log(results);
-            if(err){
-                reject(err)
-            } else{
-                resolve(results.affectedRows)
-            }
-        })
-    }
-    )
-}
