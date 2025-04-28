@@ -89,7 +89,21 @@ export const getById = function (req, res) {
 export const create = function(req, res){
 
     const objEvento = req.body
-    arrEventoJson.arreglo.push(objEvento)
-    res.send(objEvento)
+    console.log(objEvento)
+    seventos.create(objEvento)
+    .then( idEvento =>{
+
+        console.log("....despues de seventos.create()");
+        res.json({"IdEvento":idEvento});
+
+        })
+    .catch(
+        err => {
+        res.status(500).json({"error":"Error ingresando registros"});
+    }
+)
+
+    //arrEventoJson.arreglo.push(objEvento)
+    /*res.send(objEvento)*/
 }
 

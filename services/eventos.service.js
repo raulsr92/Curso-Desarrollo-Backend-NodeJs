@@ -41,3 +41,21 @@ export const getById = function (Id_Evento) {
     )
 }
 
+
+export const create = function (objEvento) {
+ 
+    console.log("----------------------Service Insertar nuevo Evento--------------------")
+    
+    return new Promise( (resolve, reject) =>{
+        pool.query( 'INSERT INTO tb_evento (Nombre_Evento,Fecha_Evento,Hora_Evento, Id_Cate, Id_Local) VALUES (?, ?,?, ?,?)',
+                    [objEvento.Nombre_Evento, objEvento.Fecha_Evento,objEvento.Hora_Evento,objEvento.Id_Cate,objEvento.Id_Local],(err, results, fields)=>{
+            console.log(results);
+            if(err){
+                reject(err)
+            } else{
+                resolve(results.insertId)
+            }
+        })
+    }
+    )
+}
