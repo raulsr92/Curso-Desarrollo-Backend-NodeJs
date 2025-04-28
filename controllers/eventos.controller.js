@@ -1,3 +1,8 @@
+// Importación de paquetes y archivos
+
+import * as seventos from '../services/eventos.service.js'
+
+
 
 // Array de los Eventos
 
