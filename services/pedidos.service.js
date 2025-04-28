@@ -47,13 +47,13 @@ export const getById = function (Id_Pedido) {
 
 // ⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩  Método create
 
-export const create = function (objEvento) {
+export const create = function (objPedido) {
  
     console.log("----------------------Service Insertar nuevo Evento--------------------")
     
     return new Promise( (resolve, reject) =>{
-        pool.query( 'INSERT INTO tb_evento (Nombre_Evento,Fecha_Evento,Hora_Evento, Id_Cate, Id_Local) VALUES (?, ?,?, ?,?)',
-                    [objEvento.Nombre_Evento, objEvento.Fecha_Evento,objEvento.Hora_Evento,objEvento.Id_Cate,objEvento.Id_Local],(err, results, fields)=>{
+        pool.query( 'INSERT INTO tb_pedido  (fecha_pedido,monto_total_pedido,id_mediopago, id_usuario, Id_Evento ) VALUES (now(),?,?,?,?)',
+                    [objPedido.monto_total_pedido, objPedido.id_mediopago,objPedido.id_usuario,objPedido.Id_Evento],(err, results, fields)=>{
             console.log(results);
             if(err){
                 reject(err)

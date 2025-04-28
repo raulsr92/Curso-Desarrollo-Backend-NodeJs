@@ -52,13 +52,13 @@ export const getById = function (req, res) {
 
 export const create = function(req, res){
 
-    const objEvento = req.body
-    console.log(objEvento)
-    seventos.create(objEvento)
-    .then( idEvento =>{
+    const objPedido = req.body
+    console.log(objPedido)
+    spedidos.create(objPedido)
+    .then( idPedido =>{
 
-        console.log("....despues de seventos.create()");
-        res.json({"IdEvento":idEvento});
+        console.log("....despues de spedidos.create()");
+        res.json({"Id de Pedido generado":idPedido});
 
         })
     .catch(
