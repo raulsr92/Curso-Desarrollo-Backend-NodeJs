@@ -49,11 +49,11 @@ export const getAll = function (req, res) {
     console.log("------------controller------------");
 
     seventos.getAll()
-    .then( (eventos) =>{
+    .then( eventos =>{
 
             console.log("....despues de seventos.getAll()");
 
-            res.json(eventos|| [] )
+            res.json(eventos || [] )
 
     })
     .catch(
