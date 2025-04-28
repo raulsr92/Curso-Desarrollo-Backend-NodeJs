@@ -31,12 +31,12 @@ export const getAll = function (req, res) {
 export const getById = function (req, res) {
     console.log("------------controller------------");
 
-    seventos.getById(req.params.id)
-    .then( objEventos =>{
+    spedidos.getById(req.params.id)
+    .then( objPedido =>{
 
-            console.log("....despues de seventos.getById()");
+            console.log("....despues de spedidos.getById()");
 
-            res.json(objEventos || [] )
+            res.json(objPedido || [] )
 
     })
     .catch(

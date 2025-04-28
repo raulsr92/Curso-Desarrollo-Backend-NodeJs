@@ -27,13 +27,13 @@ export const getAll = function () {
 
 // ⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩  Método getById
 
-export const getById = function (Id_Evento) {
+export const getById = function (Id_Pedido) {
  
     console.log("----------------------Service Insertar nuevo Evento--------------------")
     
     return new Promise( (resolve, reject) =>{
-        pool.query( 'select E.Id_Evento,E.Nombre_Evento, E.Fecha_Evento,C.Nom_Categoria, L.Nom_Local, L.Capacidad_Local from tb_evento E inner join tb_categoria C on E.Id_Cate = C.Id_Cate inner join tb_local L on E.Id_Local = L.Id_Local where E.Id_Evento=?  order by E.Id_Evento',
-                    [Id_Evento],(err, results, fields)=>{
+        pool.query( 'select P.id_pedido,U.nom_usuario,U.correo_usuario,P.fecha_pedido,P.monto_total_pedido,MP.nombre_mediopago,E.Nombre_Evento from tb_pedido P inner join tb_usuario U on P.id_usuario = U.id_usuario inner join tb_evento E on P.Id_Evento = E.Id_Evento inner join tb_mediopago MP on MP.id_mediopago = P.id_mediopago where id_pedido = ?',
+                    [Id_Pedido],(err, results, fields)=>{
             console.log(results);
             if(err){
                 reject(err)
