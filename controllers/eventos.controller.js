@@ -66,9 +66,24 @@ export const getAll = function (req, res) {
 
 
 
-
 export const getById = function (req, res) {
-    res.send(arrEventoJson.arreglo[req.params.id])
+    console.log("------------controller------------");
+
+    seventos.getById(req.params.id)
+    .then( objEventos =>{
+
+            console.log("....despues de seventos.getById()");
+
+            res.json(objEventos || [] )
+
+    })
+    .catch(
+        err => {
+            res.status(500).json({"error":"Error obteniendo registros"});
+        }
+    )
+
+    /*res.send(arrEventoJson.arreglo[req.params.id])*/
 }
 
 export const create = function(req, res){
