@@ -20,3 +20,20 @@ export const getAll = function (req, res) {
         }
     )
 }
+
+// ⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩  Método getById
+
+export const getById = function (req, res) {
+    console.log("------------controller------------");
+    susuarios.getById(req.params.id)
+    .then( objUsuarios =>{
+            console.log("....despues de susuarios.getById()");
+
+            res.json(objUsuarios || [] )
+    })
+    .catch(
+        err => {
+            res.status(500).json({"error":"Error obteniendo registros"});
+        }
+    )
+}
