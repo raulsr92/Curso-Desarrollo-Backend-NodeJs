@@ -37,3 +37,22 @@ export const getById = function (req, res) {
         }
     )
 }
+
+// ⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩  Método create
+
+export const create = function(req, res){
+
+    const objUser = req.body
+    console.log(objUser)
+    susuarios.create(objUser)
+    .then( idUsuario =>{
+        console.log("....despues de susuarios.create()");
+        res.json({"Id de usuario creado en BD":idUsuario});
+        })
+    .catch(
+        err => {
+        res.status(500).json({"error":"Error ingresando registros"});
+    }
+)
+
+}

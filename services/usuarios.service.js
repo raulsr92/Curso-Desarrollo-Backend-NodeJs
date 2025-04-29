@@ -71,3 +71,26 @@ export const getById = function (Id_Usuario) {
     }
     )
 }
+
+// ⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩  Método create
+
+export const create = function (objUser) {
+ 
+    console.log("----------------------Service Insertar nuevo Evento--------------------")
+    
+    return new Promise( (resolve, reject) =>{
+        pool.query( 
+            `
+            INSERT INTO tb_usuario (nom_usuario, ape_usuario, correo_usuario, pass_usuario, tipo_doc_usuario,nro_doc_usuario, pais_usuario,ubigeo,cod_telef_usuario,telef_usuario,fingreso_usuario,num_errores_usuario,Activo)
+			VALUES (?,?,?,?,?,?,?,?,?,?,1,0,1)
+            `,[objUser.nom_usuario,objUser.ape_usuario,objUser.correo_usuario,objUser.pass_usuario,objUser.tipo_doc_usuario,objUser.nro_doc_usuario,objUser.pais_usuario,objUser.ubigeo,objUser.cod_telef_usuario,objUser.telef_usuario],(err, results, fields)=>{
+            console.log(results);
+            if(err){
+                reject(err)
+            } else{
+                resolve(results.insertId)
+            }
+        })
+    }
+    )
+}
