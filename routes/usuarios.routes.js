@@ -15,7 +15,7 @@ const router = express.Router();
 router.get("/",cusuarios.getAll);
 router.get("/:id",cusuarios.getById);
 router.post("/", cusuarios.create)
-//router.put("/:id",cusuarios.update)
+router.put("/:id",cusuarios.update)
 //router.delete("/:id",cusuarios.deleteRow)
 
 export default router;

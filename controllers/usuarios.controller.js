@@ -54,5 +54,23 @@ export const create = function(req, res){
         res.status(500).json({"error":"Error ingresando registros"});
     }
 )
+}
 
+// ⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩  Método update
+
+export const update = function(req, res){
+
+    const objUser = req.body
+    console.log(objUser)
+    susuarios.update(req.params.id,objUser)
+    .then( NumRegistros =>{
+        console.log("....despues de susuarios.update()");
+        res.json({"NumeroRegistrosModificados":NumRegistros});
+
+        })
+    .catch(
+        err => {
+        res.status(500).json({"error":"Error actualizando registros"});
+    }
+)
 }

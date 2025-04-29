@@ -94,3 +94,29 @@ export const create = function (objUser) {
     }
     )
 }
+
+
+// ⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩  Método update
+
+export const update = function (id_usuario, objUser) {
+ 
+    console.log("----------------------Service Modificar Usuario--------------------")
+    
+    return new Promise( (resolve, reject) =>{
+        pool.query(
+            `
+            update tb_usuario set nom_usuario = ?, ape_usuario = ? ,correo_usuario= ?, pass_usuario=?, ubigeo=?, telef_usuario=? where  id_usuario = ?;
+            `
+            ,
+            [objUser.nom_usuario,objUser.ape_usuario,objUser.correo_usuario,objUser.pass_usuario,objUser.ubigeo,objUser.telef_usuario,id_usuario]
+            ,(err, results, fields)=>{
+            console.log(results);
+            if(err){
+                reject(err)
+            } else{
+                resolve(results.affectedRows)
+            }
+        })
+    }
+    )
+}
