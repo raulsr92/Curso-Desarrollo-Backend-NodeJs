@@ -120,3 +120,23 @@ export const update = function (id_usuario, objUser) {
     }
     )
 }
+
+// ⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩  Método delete
+
+export const deleteRow = function (Id_Usuario) {
+ 
+    console.log("----------------------Service Desactivar usuario--------------------")
+    
+    return new Promise( (resolve, reject) =>{
+        pool.query( 'update tb_usuario set Activo=0  where id_usuario = ?',
+                    [Id_Usuario],(err, results, fields)=>{
+            console.log(results);
+            if(err){
+                reject(err)
+            } else{
+                resolve(results.affectedRows)
+            }
+        })
+    }
+    )
+}
