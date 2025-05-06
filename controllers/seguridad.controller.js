@@ -29,9 +29,7 @@ export const logueo = function(req, res){
 // ⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩  Método Login
 
 export const login = function (req, res) {
-
     console.log("------------controller------------");
-
     const reqUsuario = req.body;
     console.log(reqUsuario)
     
@@ -56,7 +54,7 @@ export const login = function (req, res) {
                         token,
                         refreshToken,
                         "user":{
-                            "id_persona": usuarios[0].id_persona,
+                            "id_usuario": usuarios[0].id_usuario,
                             "correo_usuario": usuarios[0].correo_usuario,
                             "rol_usuario": usuarios[0].rol_usuario,
                         }
@@ -76,4 +74,7 @@ export const login = function (req, res) {
         res.status(500).json({"error":"Error obteniendo registros"});
     });
 }
+
+
+// ⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩ Método Refresh Token
 

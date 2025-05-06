@@ -4,31 +4,30 @@ console.log("Hola Mundo, soy Raúl")
 
 import express from 'express'
 import bodyParser from 'body-parser'
-import cors from 'cors'
-
+import cors from './config/cors.js'
+import PUERTO from './utils/constantes.js'
 import api from './routes.js'
-
+import dotenv from 'dotenv';
 // Instancias
-
 
 const app = express();
 
-const corsOptions ={
-    origin:'http://localhost/' ,
-    methods: ['GET', 'POST','PUT', 'DELETE'],
-    allowedHeaders: ['Content-type','Authorization'],
-    credentials: true
-}
 
 // Configuraciones y redireccioens
 
 app.use(bodyParser.json());
+app.use(cors);
+dotenv.config();
 
-app.use(cors(corsOptions));
+//Endpoint principal...
 
 app.use("/api/v1", api)
 
+// Inicializar el servidor
 
+app.listen(PUERTO, ()=>{
+    console.log("Listening on "+ PUERTO)
+})
 
 
 /*
@@ -68,8 +67,3 @@ app.post("/eventos", function (req,res) {
 */
 
 
-// Inicializar el servidor
-
-app.listen("4001", ()=>{
-    console.log("Listening on "+ 4001)
-})

@@ -8,6 +8,6 @@ const router = express.Router();
 
 // Rutas
 
-router.get("/",cseguridad.logueo);
+router.post("/login",cseguridad.login);
 
 export default router;
