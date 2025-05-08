@@ -93,6 +93,7 @@ export const getById = function (req, res) {
 export const create = function(req, res){
 
     const objEvento = req.body
+    console.log(`Evento a crear: `)
     console.log(objEvento)
     seventos.create(objEvento)
     .then( idEvento =>{
