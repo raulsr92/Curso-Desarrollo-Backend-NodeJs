@@ -18,6 +18,6 @@ router.get("/",ceventos.getAll);
 router.get("/:id",ceventos.getById);
 router.post("/",mauth.authMiddleware() ,ceventos.create)
 router.put("/:id",mauth.authMiddleware(["administrador"]),ceventos.update)
-router.delete("/:id",ceventos.deleteRow)
+router.delete("/:id",mauth.authMiddleware(["administrador"]),ceventos.deleteRow)
 
 export default router;
