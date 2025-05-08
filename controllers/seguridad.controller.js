@@ -91,9 +91,9 @@ export const refreshToken = function (req, res) {
     console.log(`Decoded(playload):`)
     console.log(decoded)
     console.log(`Decoded(playload) con ID:`)
-    console.log(decoded.id_usuario)
+    console.log(decoded.id_persona)
 
-    sseguridad.findUserById(decoded.id_usuario)
+    sseguridad.findUserById(decoded.id_persona)
     .then(usuarios =>{
         console.log(`Resultado del finById:`)
         console.log(usuarios)
