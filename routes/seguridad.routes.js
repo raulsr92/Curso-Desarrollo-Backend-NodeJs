@@ -9,5 +9,7 @@ const router = express.Router();
 // Rutas
 
 router.post("/login",cseguridad.login);
+router.post("/refresh-token",cseguridad.refreshToken)
 
 export default router;
+

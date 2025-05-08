@@ -78,3 +78,50 @@ export const login = function (req, res) {
 
 // ⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩⟨~⟩ Método Refresh Token
 
+export const refreshToken = function (req, res) {
+    console.log("------------Seguridad controller------------");
+    const {refreshToken} = req.body;
+    console.log(`RefreshToken: ${refreshToken}`)
+
+    if (!refreshToken) {
+        return res.status(401).json({"error":"Refresh token requerido"});
+    }
+    const decoded = auth.verifyRefreshToken(refreshToken)
+
+    console.log(`Decoded(playload):`)
+    console.log(decoded)
+    console.log(`Decoded(playload) con ID:`)
+    console.log(decoded.id_usuario)
+
+    sseguridad.findUserById(decoded.id_usuario)
+    .then(usuarios =>{
+        console.log(`Resultado del finById:`)
+        console.log(usuarios)
+
+        if (usuarios[0]) {
+
+            let token = auth.generateToken(usuarios[0])
+            console.log(`Token: ${token}`)
+
+            res.json( 
+                { 
+                    token, 
+                    "user":{
+                        "id_usuario": usuarios[0].id_usuario,
+                        "correo_usuario": usuarios[0].correo_usuario,
+                        "rol_usuario": usuarios[0].rol_usuario,
+                    }
+                } );
+        } else{
+            res.status(403).json( {"error":"Acceso no autorizado"} );
+        }
+    }
+    )
+    .catch(
+        err =>{
+            console.log(err);
+            res.status(500).json({"error":"Error obteniendo registros"});  
+        }
+    )
+
+}
